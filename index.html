@@ -1,917 +1,183 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CrediAlivio USA — Deuda Médica $0</title>
-<meta name="description" content="Cancelamos tu deuda médica en EE.UU. aplicando leyes federales que los hospitales no te explican. Primera consulta gratis. Sin importar tu estatus migratorio.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-<style>
-:root {
-  --verde: #059669;
-  --verde-claro: #d1fae5;
-  --verde-oscuro: #065f46;
-  --azul: #1d4ed8;
-  --azul-claro: #dbeafe;
-  --azul-oscuro: #1e3a8a;
-  --blanco: #ffffff;
-  --gris-claro: #f8fafc;
-  --gris-medio: #e2e8f0;
-  --gris-texto: #64748b;
-  --negro: #0f172a;
-  --negro-suave: #1e293b;
-}
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: 'Inter', sans-serif;
-  color: var(--negro);
-  background: var(--blanco);
-  font-size: 16px;
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-
-/* ─── TIPOGRAFÍA ─── */
-h1, h2, h3, h4 { font-family: 'Syne', sans-serif; line-height: 1.15; }
-h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 800; }
-h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 700; }
-h3 { font-size: 1.25rem; font-weight: 700; }
-p { color: var(--gris-texto); line-height: 1.75; }
-
-/* ─── NAV ─── */
-nav {
-  position: sticky; top: 0; z-index: 100;
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--gris-medio);
-  padding: 0 2rem;
-  display: flex; align-items: center; justify-content: space-between;
-  height: 64px;
-}
-
-.nav-logo {
-  font-family: 'Syne', sans-serif;
-  font-weight: 800; font-size: 1.3rem;
-  color: var(--negro);
-  text-decoration: none;
-  display: flex; align-items: center; gap: 8px;
-}
-
-.logo-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--verde); display: inline-block; }
-
-.nav-links { display: flex; gap: 2rem; list-style: none; }
-.nav-links a { text-decoration: none; font-size: 0.9rem; color: var(--gris-texto); font-weight: 500; transition: color 0.2s; }
-.nav-links a:hover { color: var(--verde); }
-
-.nav-cta {
-  background: var(--verde);
-  color: white !important;
-  padding: 8px 20px;
-  border-radius: 100px;
-  font-size: 0.875rem !important;
-  font-weight: 600 !important;
-  transition: background 0.2s !important;
-}
-.nav-cta:hover { background: var(--verde-oscuro) !important; color: white !important; }
-
-/* ─── HERO ─── */
-.hero {
-  min-height: calc(100vh - 64px);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: 4rem;
-  padding: 5rem 6rem;
-  background: linear-gradient(135deg, #f0fdf4 0%, #eff6ff 100%);
-  position: relative;
-  overflow: hidden;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -200px; right: -200px;
-  width: 600px; height: 600px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(5,150,105,0.08) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.hero-eyebrow {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: var(--verde-claro);
-  color: var(--verde-oscuro);
-  font-size: 0.8rem; font-weight: 600;
-  padding: 6px 14px; border-radius: 100px;
-  margin-bottom: 1.5rem; letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.hero h1 { margin-bottom: 1.5rem; color: var(--negro); }
-
-.hero h1 span {
-  color: var(--verde);
-  position: relative;
-}
-
-.hero p { font-size: 1.1rem; margin-bottom: 2.5rem; max-width: 500px; }
-
-.btn-group { display: flex; gap: 12px; flex-wrap: wrap; }
-
-.btn-primary {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: var(--verde);
-  color: white;
-  padding: 14px 28px;
-  border-radius: 100px;
-  font-weight: 600; font-size: 0.95rem;
-  text-decoration: none;
-  transition: background 0.2s, transform 0.15s;
-  box-shadow: 0 4px 20px rgba(5,150,105,0.3);
-}
-.btn-primary:hover { background: var(--verde-oscuro); transform: translateY(-1px); }
-
-.btn-secondary {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: transparent;
-  color: var(--negro);
-  padding: 14px 28px;
-  border-radius: 100px;
-  font-weight: 600; font-size: 0.95rem;
-  text-decoration: none;
-  border: 1.5px solid var(--gris-medio);
-  transition: border-color 0.2s, background 0.2s;
-}
-.btn-secondary:hover { border-color: var(--verde); background: var(--verde-claro); }
-
-/* ─── HERO CARD ─── */
-.hero-visual {
-  display: flex; flex-direction: column; gap: 16px;
-}
-
-.stat-card {
-  background: white;
-  border-radius: 20px;
-  padding: 1.5rem 2rem;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
-  border: 1px solid rgba(5,150,105,0.1);
-}
-
-.stat-card-top {
-  display: flex; align-items: center; justify-content: space-between;
-  margin-bottom: 0.75rem;
-}
-
-.stat-icon {
-  width: 44px; height: 44px; border-radius: 12px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.3rem;
-}
-.stat-icon.green { background: var(--verde-claro); }
-.stat-icon.blue { background: var(--azul-claro); }
-
-.stat-label { font-size: 0.8rem; color: var(--gris-texto); font-weight: 500; }
-.stat-value { font-family: 'Syne', sans-serif; font-size: 2.2rem; font-weight: 800; color: var(--negro); }
-.stat-sub { font-size: 0.8rem; color: var(--verde); font-weight: 600; margin-top: 2px; }
-
-.mini-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-
-.mini-card {
-  background: white;
-  border-radius: 16px;
-  padding: 1.25rem;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-  border: 1px solid var(--gris-medio);
-}
-
-.mini-card .icon { font-size: 1.5rem; margin-bottom: 8px; }
-.mini-card h4 { font-size: 0.85rem; color: var(--negro); margin-bottom: 2px; font-family: 'Inter', sans-serif; font-weight: 600; }
-.mini-card p { font-size: 0.75rem; color: var(--gris-texto); }
-
-/* ─── SECCIONES GENERALES ─── */
-section { padding: 6rem 6rem; }
-
-.section-eyebrow {
-  display: inline-block;
-  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em;
-  text-transform: uppercase; color: var(--verde);
-  margin-bottom: 0.75rem;
-}
-
-.section-title { margin-bottom: 1rem; color: var(--negro); }
-.section-sub { font-size: 1.05rem; max-width: 600px; margin: 0 auto 3.5rem; text-align: center; }
-
-.text-center { text-align: center; }
-
-/* ─── PROBLEMA / SOLUCIÓN ─── */
-.problema { background: var(--negro-suave); color: white; }
-.problema h2 { color: white; }
-.problema p { color: #94a3b8; }
-.problema .section-eyebrow { color: #34d399; }
-
-.problema-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
-  margin-top: 3rem;
-}
-
-.problema-item {
-  padding: 2rem;
-  border-radius: 16px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
-  transition: background 0.2s;
-}
-.problema-item:hover { background: rgba(5,150,105,0.1); border-color: rgba(5,150,105,0.2); }
-.problema-item .emoji { font-size: 2rem; margin-bottom: 1rem; display: block; }
-.problema-item h3 { color: white; margin-bottom: 0.5rem; font-size: 1.1rem; }
-.problema-item p { font-size: 0.9rem; color: #94a3b8; }
-
-/* ─── CÓMO FUNCIONA ─── */
-.proceso { background: var(--gris-claro); }
-
-.pasos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
-
-.paso {
-  background: white;
-  border-radius: 20px;
-  padding: 2.5rem 2rem;
-  border: 1px solid var(--gris-medio);
-  position: relative;
-  transition: box-shadow 0.2s, transform 0.2s;
-}
-.paso:hover { box-shadow: 0 8px 32px rgba(5,150,105,0.12); transform: translateY(-4px); }
-
-.paso-num {
-  width: 48px; height: 48px;
-  border-radius: 14px;
-  background: var(--verde);
-  color: white;
-  font-family: 'Syne', sans-serif;
-  font-weight: 800; font-size: 1.1rem;
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 1.25rem;
-}
-
-.paso h3 { margin-bottom: 0.5rem; font-size: 1.1rem; }
-.paso p { font-size: 0.9rem; }
-
-/* ─── LEYES ─── */
-.leyes { background: white; }
-
-.leyes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
-
-.ley-card {
-  padding: 2rem;
-  border-radius: 16px;
-  border: 1.5px solid var(--gris-medio);
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-.ley-card:hover { border-color: var(--verde); box-shadow: 0 4px 20px rgba(5,150,105,0.1); }
-.ley-badge {
-  display: inline-block;
-  background: var(--verde-claro);
-  color: var(--verde-oscuro);
-  font-size: 0.7rem; font-weight: 700;
-  padding: 4px 10px; border-radius: 6px;
-  margin-bottom: 1rem; letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-.ley-card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
-.ley-card p { font-size: 0.85rem; }
-
-/* ─── TESTIMONIOS ─── */
-.testimonios { background: linear-gradient(135deg, #f0fdf4 0%, #eff6ff 100%); }
-
-.testimonios-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
-
-.testimonio {
-  background: white;
-  border-radius: 20px;
-  padding: 2rem;
-  border: 1px solid var(--gris-medio);
-  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-}
-
-.testimonio-stars { color: #f59e0b; font-size: 1rem; margin-bottom: 1rem; letter-spacing: 2px; }
-.testimonio blockquote { font-size: 0.9rem; color: var(--negro-suave); line-height: 1.7; margin-bottom: 1.5rem; font-style: italic; }
-.testimonio-autor { display: flex; align-items: center; gap: 12px; }
-.testimonio-avatar {
-  width: 40px; height: 40px; border-radius: 50%;
-  background: var(--verde);
-  color: white; font-weight: 700; font-size: 0.85rem;
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Syne', sans-serif;
-}
-.testimonio-nombre { font-weight: 600; font-size: 0.85rem; color: var(--negro); }
-.testimonio-lugar { font-size: 0.75rem; color: var(--gris-texto); }
-
-/* ─── RESULTADO ─── */
-.resultado-badge {
-  display: inline-block;
-  background: var(--verde);
-  color: white;
-  font-size: 0.75rem; font-weight: 700;
-  padding: 4px 12px; border-radius: 6px;
-  margin-top: 0.5rem;
-  letter-spacing: 0.04em;
-}
-
-/* ─── BLOG ─── */
-.blog { background: white; }
-
-.blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
-
-.blog-card {
-  border-radius: 20px;
-  overflow: hidden;
-  border: 1px solid var(--gris-medio);
-  transition: box-shadow 0.2s, transform 0.2s;
-  cursor: pointer;
-}
-.blog-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.1); transform: translateY(-4px); }
-
-.blog-thumb {
-  height: 180px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 3rem;
-}
-.blog-thumb.t1 { background: linear-gradient(135deg, #d1fae5, #a7f3d0); }
-.blog-thumb.t2 { background: linear-gradient(135deg, #dbeafe, #bfdbfe); }
-.blog-thumb.t3 { background: linear-gradient(135deg, #fef3c7, #fde68a); }
-
-.blog-body { padding: 1.5rem; }
-.blog-tag {
-  display: inline-block;
-  font-size: 0.7rem; font-weight: 700;
-  padding: 3px 10px; border-radius: 6px;
-  margin-bottom: 0.75rem; letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-.blog-tag.verde { background: var(--verde-claro); color: var(--verde-oscuro); }
-.blog-tag.azul { background: var(--azul-claro); color: var(--azul-oscuro); }
-.blog-tag.amarillo { background: #fef3c7; color: #92400e; }
-
-.blog-card h3 { font-size: 1rem; margin-bottom: 0.5rem; line-height: 1.4; }
-.blog-card p { font-size: 0.85rem; margin-bottom: 1rem; }
-.blog-leer { font-size: 0.85rem; color: var(--verde); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; }
-.blog-leer:hover { text-decoration: underline; }
-
-/* ─── GARANTÍA ─── */
-.garantia {
-  background: var(--negro-suave);
-  display: flex; align-items: center; justify-content: center;
-  text-align: center;
-  padding: 5rem 6rem;
-}
-.garantia-inner { max-width: 700px; }
-.garantia-icon { font-size: 4rem; margin-bottom: 1.5rem; display: block; }
-.garantia h2 { color: white; margin-bottom: 1rem; }
-.garantia p { color: #94a3b8; font-size: 1.05rem; margin-bottom: 2rem; }
-
-/* ─── CTA FINAL ─── */
-.cta-final {
-  background: var(--verde);
-  text-align: center;
-  padding: 6rem;
-}
-.cta-final h2 { color: white; margin-bottom: 1rem; }
-.cta-final p { color: rgba(255,255,255,0.8); font-size: 1.1rem; margin-bottom: 2.5rem; }
-.btn-white {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: white;
-  color: var(--verde-oscuro);
-  padding: 16px 36px;
-  border-radius: 100px;
-  font-weight: 700; font-size: 1rem;
-  text-decoration: none;
-  transition: transform 0.15s, box-shadow 0.2s;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-}
-.btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.2); }
-
-/* ─── FOOTER ─── */
-footer {
-  background: var(--negro);
-  color: #64748b;
-  padding: 3rem 6rem;
-  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem;
-}
-
-.footer-brand .nav-logo { color: white; font-size: 1.1rem; margin-bottom: 0.75rem; display: flex; }
-.footer-brand p { font-size: 0.85rem; line-height: 1.7; }
-footer h4 { color: white; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; font-family: 'Inter', sans-serif; }
-footer ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-footer ul li a { color: #64748b; text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
-footer ul li a:hover { color: var(--verde); }
-.footer-bottom {
-  background: var(--negro);
-  border-top: 1px solid rgba(255,255,255,0.06);
-  padding: 1.25rem 6rem;
-  display: flex; justify-content: space-between; align-items: center;
-}
-.footer-bottom p { font-size: 0.78rem; color: #475569; }
-.footer-bottom a { color: var(--verde); text-decoration: none; font-size: 0.78rem; }
-
-/* ─── FORMULARIO CONTACTO ─── */
-.contacto { background: var(--gris-claro); }
-
-.contacto-inner {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
-}
-
-.form-group { margin-bottom: 1.25rem; }
-.form-group label { display: block; font-size: 0.85rem; font-weight: 500; color: var(--negro); margin-bottom: 6px; }
-.form-group input, .form-group select, .form-group textarea {
-  width: 100%;
-  padding: 12px 16px;
-  border: 1.5px solid var(--gris-medio);
-  border-radius: 12px;
-  font-size: 0.9rem;
-  font-family: 'Inter', sans-serif;
-  background: white;
-  color: var(--negro);
-  transition: border-color 0.2s;
-  outline: none;
-}
-.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-  border-color: var(--verde);
-  box-shadow: 0 0 0 3px rgba(5,150,105,0.1);
-}
-.form-group textarea { resize: vertical; min-height: 120px; }
-.form-submit {
-  background: var(--verde);
-  color: white;
-  border: none;
-  padding: 14px 32px;
-  border-radius: 100px;
-  font-size: 0.95rem; font-weight: 600;
-  cursor: pointer; width: 100%;
-  transition: background 0.2s;
-  font-family: 'Inter', sans-serif;
-}
-.form-submit:hover { background: var(--verde-oscuro); }
-
-.contacto-info h3 { margin-bottom: 1rem; }
-.info-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 1.5rem; }
-.info-icon {
-  width: 40px; height: 40px; border-radius: 10px;
-  background: var(--verde-claro);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.1rem; flex-shrink: 0;
-}
-.info-item h4 { font-size: 0.85rem; color: var(--negro); font-family: 'Inter', sans-serif; font-weight: 600; margin-bottom: 2px; }
-.info-item p { font-size: 0.85rem; }
-
-/* ─── STATS BAR ─── */
-.stats-bar {
-  background: white;
-  border-top: 1px solid var(--gris-medio);
-  border-bottom: 1px solid var(--gris-medio);
-  padding: 3rem 6rem;
-  display: grid; grid-template-columns: repeat(4, 1fr);
-  gap: 2rem; text-align: center;
-}
-
-.stat-item .num {
-  font-family: 'Syne', sans-serif;
-  font-weight: 800; font-size: 2.5rem;
-  color: var(--verde);
-  line-height: 1;
-}
-.stat-item .desc { font-size: 0.85rem; color: var(--gris-texto); margin-top: 6px; }
-
-/* ─── WHATSAPP FLOAT ─── */
-.wa-float {
-  position: fixed; bottom: 24px; right: 24px; z-index: 999;
-  background: #25d366;
-  color: white;
-  width: 58px; height: 58px;
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.6rem;
-  box-shadow: 0 4px 20px rgba(37,211,102,0.4);
-  text-decoration: none;
-  transition: transform 0.2s;
-}
-.wa-float:hover { transform: scale(1.1); }
-
-/* ─── RESPONSIVE ─── */
-@media (max-width: 1024px) {
-  section, .hero, footer, .stats-bar, .cta-final, .garantia, .footer-bottom { padding-left: 3rem; padding-right: 3rem; }
-  .hero { grid-template-columns: 1fr; gap: 3rem; padding-top: 4rem; padding-bottom: 4rem; }
-  .hero-visual { max-width: 480px; }
-  footer { grid-template-columns: 1fr 1fr; }
-}
-
-@media (max-width: 768px) {
-  section, .hero, footer, .stats-bar, .cta-final, .garantia, .footer-bottom { padding-left: 1.5rem; padding-right: 1.5rem; }
-  .problema-grid, .pasos, .leyes-grid, .testimonios-grid, .blog-grid { grid-template-columns: 1fr; }
-  .mini-cards { grid-template-columns: 1fr 1fr; }
-  .stats-bar { grid-template-columns: 1fr 1fr; }
-  footer { grid-template-columns: 1fr; gap: 2rem; }
-  .contacto-inner { grid-template-columns: 1fr; }
-  .nav-links { display: none; }
-}
-</style>
-</head>
-<body>
-
-<!-- NAV -->
-<nav>
-  <a href="#" class="nav-logo">
-    <span class="logo-dot"></span>
-    CrediAlivio USA
-  </a>
-  <ul class="nav-links">
-    <li><a href="#como-funciona">Cómo funciona</a></li>
-    <li><a href="#leyes">Tus derechos</a></li>
-    <li><a href="#testimonios">Resultados</a></li>
-    <li><a href="#blog">Aprender</a></li>
-    <li><a href="#contacto" class="nav-cta">Consulta gratis</a></li>
-  </ul>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-content">
-    <div class="hero-eyebrow">
-      <span>✓</span> Legal · Confidencial · Sin importar tu estatus
-    </div>
-    <h1>Tu deuda médica<br>puede llegar a <span>$0</span></h1>
-    <p>Aplicamos los programas federales que los hospitales están obligados a ofrecer pero nunca te explican. Familias latinas en Florida, Texas y California.</p>
-    <div class="btn-group">
-      <a href="https://https://https://https://https://wa.me/19082477173/19082477173/19082477173/19082477173/text=Hola,%20vi%20tu%20sitio%20y%20quiero%20saber%20si%20califico%20para%20reducir%20mi%20deuda%20médica." class="btn-primary" target="_blank">
-        💬 Consulta gratis por WhatsApp
-      </a>
-      <a href="#como-funciona" class="btn-secondary">Ver cómo funciona →</a>
-    </div>
-  </div>
-
-  <div class="hero-visual">
-    <div class="stat-card">
-      <div class="stat-card-top">
-        <div>
-          <div class="stat-label">Deuda promedio cancelada</div>
-          <div class="stat-value">$18,400</div>
-          <div class="stat-sub">↓ reducida a $0 en promedio</div>
-        </div>
-        <div class="stat-icon green">🏥</div>
-      </div>
-    </div>
-    <div class="mini-cards">
-      <div class="mini-card">
-        <div class="icon">⚡</div>
-        <h4>2–6 semanas</h4>
-        <p>Tiempo promedio de resolución</p>
-      </div>
-      <div class="mini-card">
-        <div class="icon">🔒</div>
-        <h4>100% legal</h4>
-        <p>Leyes federales Sección 501(r)</p>
-      </div>
-      <div class="mini-card">
-        <div class="icon">🌎</div>
-        <h4>Sin importar</h4>
-        <p>tu estatus migratorio</p>
-      </div>
-      <div class="mini-card">
-        <div class="icon">💰</div>
-        <h4>Sin pago</h4>
-        <p>si no logramos resultados</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- STATS BAR -->
-<div class="stats-bar">
-  <div class="stat-item"><div class="num">+500</div><div class="desc">Familias ayudadas</div></div>
-  <div class="stat-item"><div class="num">$2.1M</div><div class="desc">En deudas canceladas</div></div>
-  <div class="stat-item"><div class="num">94%</div><div class="desc">Casos resueltos exitosamente</div></div>
-  <div class="stat-item"><div class="num">3</div><div class="desc">Estados con cobertura activa</div></div>
-</div>
-
-<!-- PROBLEMA -->
-<section class="problema" id="problema">
-  <div class="text-center" style="margin-bottom:0">
-    <div class="section-eyebrow">El problema</div>
-    <h2>Lo que nadie te está diciendo</h2>
-    <p style="color:#94a3b8; max-width:580px; margin:1rem auto 3rem">Los hospitales tienen programas de ayuda disponibles. Pero nunca los anuncian. Solo aplican si los pides tú.</p>
-  </div>
-  <div class="problema-grid">
-    <div class="problema-item">
-      <span class="emoji">📬</span>
-      <h3>Cartas de demanda</h3>
-      <p>Recibes amenazas de embargo, demandas judiciales o llamadas a cualquier hora. El sistema de cobro está diseñado para asustarte.</p>
-    </div>
-    <div class="problema-item">
-      <span class="emoji">😰</span>
-      <h3>Miedo migratorio</h3>
-      <p>Crees que una deuda médica puede afectar tu estatus o causar deportación. Ese miedo es exactamente lo que usan para presionarte a pagar.</p>
-    </div>
-    <div class="problema-item">
-      <span class="emoji">🔇</span>
-      <h3>Silencio institucional</h3>
-      <p>El hospital sabe que tiene programas que te ayudarían. Pero nunca te los ofrecen porque perderían ingresos.</p>
-    </div>
-  </div>
-</section>
-
-<!-- CÓMO FUNCIONA -->
-<section class="proceso" id="como-funciona">
-  <div class="text-center">
-    <div class="section-eyebrow">El proceso</div>
-    <h2>Tres pasos hacia $0</h2>
-    <p class="section-sub">Sin burocracia innecesaria. Sin abogados costosos. Solo el proceso que funciona.</p>
-  </div>
-  <div class="pasos">
-    <div class="paso">
-      <div class="paso-num">1</div>
-      <h3>Diagnóstico gratuito</h3>
-      <p>Me mandas la foto de tu factura por WhatsApp. Reviso el hospital, el monto y tu estado para identificar qué programas aplican a tu caso. Sin costo y sin compromiso.</p>
-    </div>
-    <div class="paso">
-      <div class="paso-num">2</div>
-      <h3>Aplicamos por ti</h3>
-      <p>Yo preparo toda la documentación, presento la solicitud de Charity Care y negocio directamente con el departamento financiero del hospital. Tú no tienes que hablar con nadie.</p>
-    </div>
-    <div class="paso">
-      <div class="paso-num">3</div>
-      <h3>Deuda resuelta</h3>
-      <p>En 2 a 6 semanas recibes la confirmación escrita del hospital. Tu deuda queda cancelada, reducida o en un plan manejable. Las llamadas paran.</p>
-    </div>
-  </div>
-</section>
-
-<!-- LEYES -->
-<section class="leyes" id="leyes">
-  <div class="text-center">
-    <div class="section-eyebrow">Tus derechos</div>
-    <h2>Las leyes que te protegen hoy</h2>
-    <p class="section-sub">Son leyes federales reales. No trucos ni lagunas legales. Derechos que tú ya tienes y que simplemente hay que activar.</p>
-  </div>
-  <div class="leyes-grid">
-    <div class="ley-card">
-      <span class="ley-badge">Sección 501(r)</span>
-      <h3>Charity Care / Ayuda Financiera</h3>
-      <p>Todo hospital sin fines de lucro en EE.UU. está legalmente obligado a tener un programa de ayuda financiera. Si tu ingreso califica, pueden cancelar el 100% de tu deuda.</p>
-    </div>
-    <div class="ley-card">
-      <span class="ley-badge">FDCPA</span>
-      <h3>Protección contra cobradores</h3>
-      <p>La Ley de Prácticas Justas de Cobro de Deudas prohíbe las llamadas amenazantes, el acoso y las mentiras de las agencias de cobro. Puedes denunciarlos y detenerlos.</p>
-    </div>
-    <div class="ley-card">
-      <span class="ley-badge">EMTALA</span>
-      <h3>Derecho a atención de emergencia</h3>
-      <p>Los hospitales están obligados a atenderte en emergencias sin importar tu capacidad de pago. Esto crea argumentos legales sólidos para negociar y reducir cuentas de emergencia.</p>
-    </div>
-    <div class="ley-card">
-      <span class="ley-badge">ACA</span>
-      <h3>Affordable Care Act</h3>
-      <p>Establece límites sobre cómo los hospitales pueden cobrar a pacientes de bajos ingresos y exige políticas de ayuda financiera accesibles para todos los solicitantes.</p>
-    </div>
-    <div class="ley-card">
-      <span class="ley-badge">No Surprises Act</span>
-      <h3>Ley contra cobros sorpresa</h3>
-      <p>Desde 2022, los hospitales no pueden enviarte cuentas inesperadamente altas por servicios de emergencia. Si lo hicieron, tienes derecho a disputarlas.</p>
-    </div>
-    <div class="ley-card">
-      <span class="ley-badge">State Laws</span>
-      <h3>Leyes estatales adicionales</h3>
-      <p>Florida, Texas y California tienen protecciones adicionales que van más allá de la ley federal. Dependiendo de tu estado, el umbral de ingreso para calificar puede ser más alto.</p>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIOS -->
-<section class="testimonios" id="testimonios">
-  <div class="text-center">
-    <div class="section-eyebrow">Resultados reales</div>
-    <h2>Familias que recuperaron su paz</h2>
-    <p class="section-sub">Nombres cambiados para proteger la privacidad de nuestros clientes.</p>
-  </div>
-  <div class="testimonios-grid">
-    <div class="testimonio">
-      <div class="testimonio-stars">★★★★★</div>
-      <blockquote>"Tenía $22,000 en deuda del hospital después de que mi esposo tuvo un infarto. Pensé que íbamos a perder el apartamento. En menos de un mes, deuda cancelada al 100%. No podía creerlo."</blockquote>
-      <div class="testimonio-autor">
-        <div class="testimonio-avatar">ML</div>
-        <div>
-          <div class="testimonio-nombre">María L.</div>
-          <div class="testimonio-lugar">Miami, Florida</div>
-        </div>
-      </div>
-      <span class="resultado-badge">$22,000 → $0</span>
-    </div>
-    <div class="testimonio">
-      <div class="testimonio-stars">★★★★★</div>
-      <blockquote>"Me llamaban todos los días. Tenía miedo de que por deber en el hospital me iban a deportar. El asesor me explicó que eso no era posible y resolvió todo. Ahora duermo tranquilo."</blockquote>
-      <div class="testimonio-autor">
-        <div class="testimonio-avatar">CR</div>
-        <div>
-          <div class="testimonio-nombre">Carlos R.</div>
-          <div class="testimonio-lugar">Houston, Texas</div>
-        </div>
-      </div>
-      <span class="resultado-badge">$15,300 → $0</span>
-    </div>
-    <div class="testimonio">
-      <div class="testimonio-stars">★★★★★</div>
-      <blockquote>"Mi hija nació por cesárea de emergencia y nos llegó una cuenta de $41,000. Éramos nuevos en este país y no sabíamos nada. CrediAlivio nos ayudó a cancelarla casi completa."</blockquote>
-      <div class="testimonio-autor">
-        <div class="testimonio-avatar">AP</div>
-        <div>
-          <div class="testimonio-nombre">Ana P.</div>
-          <div class="testimonio-lugar">Los Angeles, California</div>
-        </div>
-      </div>
-      <span class="resultado-badge">$41,000 → $1,200</span>
-    </div>
-  </div>
-</section>
-
-<!-- BLOG -->
-<section class="blog" id="blog">
-  <div class="text-center">
-    <div class="section-eyebrow">Educación gratuita</div>
-    <h2>Lo que necesitas saber</h2>
-    <p class="section-sub">Artículos escritos para que entiendas tus derechos y tomes decisiones informadas. Sin jerga legal.</p>
-  </div>
-  <div class="blog-grid">
-    <div class="blog-card">
-      <div class="blog-thumb t1">🏥</div>
-      <div class="blog-body">
-        <span class="blog-tag verde">Charity Care</span>
-        <h3>¿Qué es Charity Care y cómo sé si califico?</h3>
-        <p>Explicamos el programa federal que puede cancelar tu deuda médica completa y los requisitos de ingreso por estado.</p>
-        <a href="#" class="blog-leer">Leer artículo →</a>
-      </div>
-    </div>
-    <div class="blog-card">
-      <div class="blog-thumb t2">📞</div>
-      <div class="blog-body">
-        <span class="blog-tag azul">Tus derechos</span>
-        <h3>Cómo detener legalmente las llamadas de cobro</h3>
-        <p>La FDCPA te da el poder de silenciar a los cobradores. Te explicamos exactamente qué decirles y cómo documentarlo.</p>
-        <a href="#" class="blog-leer">Leer artículo →</a>
-      </div>
-    </div>
-    <div class="blog-card">
-      <div class="blog-thumb t3">🛡️</div>
-      <div class="blog-body">
-        <span class="blog-tag amarillo">Migración</span>
-        <h3>Deuda médica y estatus migratorio: la verdad</h3>
-        <p>Una deuda médica NO puede causarte deportación. Explicamos por qué y qué sí puede afectar tu proceso migratorio.</p>
-        <a href="#" class="blog-leer">Leer artículo →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- GARANTÍA -->
-<section class="garantia">
-  <div class="garantia-inner">
-    <span class="garantia-icon">🛡️</span>
-    <h2>Garantía de resultado</h2>
-    <p>Si no logramos reducir tu deuda médica al menos un 50%, no pagas nada por nuestro servicio. Así de simple. Tu riesgo es cero.</p>
-    <a href="https://https://https://https://wa.me/19082477173/19082477173/19082477173/19082477173" class="btn-primary" target="_blank">Empezar ahora — es gratis</a>
-  </div>
-</section>
-
-<!-- CONTACTO -->
-<section class="contacto" id="contacto">
-  <div class="text-center" style="margin-bottom:3rem">
-    <div class="section-eyebrow">Consulta gratuita</div>
-    <h2>Cuéntanos tu caso</h2>
-  </div>
-  <div class="contacto-inner" style="max-width:960px; margin:0 auto">
-    <div>
-      <div class="form-group">
-        <label>Tu nombre</label>
-        <input type="text" placeholder="Ej: María González">
-      </div>
-      <div class="form-group">
-        <label>Estado donde vives</label>
-        <select>
-          <option value="">Seleccionar estado...</option>
-          <option>Florida</option>
-          <option>Texas</option>
-          <option>California</option>
-          <option>Otro estado</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Monto aproximado de la deuda</label>
-        <select>
-          <option value="">Seleccionar rango...</option>
-          <option>Menos de $5,000</option>
-          <option>$5,000 – $15,000</option>
-          <option>$15,000 – $30,000</option>
-          <option>Más de $30,000</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>¿Qué está pasando?</label>
-        <textarea placeholder="Cuéntame brevemente tu situación: el hospital, si ya recibiste cartas de cobro, si tienes seguro médico o no..."></textarea>
-      </div>
-      <button class="form-submit">Enviar y recibir orientación gratuita →</button>
-    </div>
-    <div class="contacto-info">
-      <h3>Respuesta en menos de 2 horas</h3>
-      <p style="margin-bottom:2rem;font-size:0.9rem">Revisamos cada caso personalmente. No bots, no respuestas genéricas.</p>
-      <div class="info-item">
-        <div class="info-icon">💬</div>
-        <div>
-          <h4>WhatsApp directo</h4>
-          <p>La forma más rápida. Escríbenos y responderemos en menos de 2 horas en horario laboral.</p>
-        </div>
-      </div>
-      <div class="info-item">
-        <div class="info-icon">🔒</div>
-        <div>
-          <h4>100% confidencial</h4>
-          <p>Tu información nunca se comparte con terceros. Todo lo que nos cuentes queda entre tú y nosotros.</p>
-        </div>
-      </div>
-      <div class="info-item">
-        <div class="info-icon">🌎</div>
-        <div>
-          <h4>Sin importar tu estatus</h4>
-          <p>No necesitas ser ciudadano ni residente permanente para acceder a los programas de Charity Care.</p>
-        </div>
-      </div>
-      <div class="info-item">
-        <div class="info-icon">⏰</div>
-        <div>
-          <h4>Horario de atención</h4>
-          <p>Lunes a Viernes, 8am – 6pm EST. Sábados 9am – 1pm para casos urgentes.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA FINAL -->
-<section class="cta-final">
-  <h2>No esperes a que te demanden</h2>
-  <p>Cada día sin actuar, la deuda acumula intereses y las agencias de cobro se vuelven más agresivas. El momento de resolver esto es hoy.</p>
-  <a href="https://https://https://https://wa.me/19082477173/19082477173/19082477173/?text=Hola,%20quiero%20una%20consulta%20gratuita%20sobre%20mi%20deuda%20médica." class="btn-white" target="_blank">
-    💬 Escribir por WhatsApp ahora
-  </a>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-brand">
-    <a href="#" class="nav-logo" style="margin-bottom:1rem">
-      <span class="logo-dot"></span>
-      CrediAlivio USA
-    </a>
-    <p>Asesoría especializada en resolución de deuda médica para familias latinas en Estados Unidos. Legal, confidencial y efectivo.</p>
-  </div>
-  <div>
-    <h4>Servicios</h4>
-    <ul>
-      <li><a href="#">Charity Care</a></li>
-      <li><a href="#">Negociación hospitalaria</a></li>
-      <li><a href="#">Protección FDCPA</a></li>
-      <li><a href="#">Consulta gratuita</a></li>
-    </ul>
-  </div>
-  <div>
-    <h4>Recursos</h4>
-    <ul>
-      <li><a href="#blog">Blog educativo</a></li>
-      <li><a href="#">Guía Charity Care</a></li>
-      <li><a href="#">Tus derechos legales</a></li>
-      <li><a href="#">Preguntas frecuentes</a></li>
-    </ul>
-  </div>
-  <div>
-    <h4>Cobertura</h4>
-    <ul>
-      <li><a href="#">Florida</a></li>
-      <li><a href="#">Texas</a></li>
-      <li><a href="#">California</a></li>
-      <li><a href="#">Otros estados</a></li>
-    </ul>
-  </div>
-</footer>
-<div class="footer-bottom">
-  <p>© 2025 CrediAlivio USA. Todos los derechos reservados.</p>
-  <a href="#">Política de privacidad</a>
-</div>
-
-<!-- WHATSAPP FLOTANTE -->
-<a href="https://https://https://https://wa.me/19082477173/19082477173/19082477173/1XXXXXXXXXX?text=Hola,%20vi%20tu%20sitio%20web%20y%20quiero%20información%20sobre%20cómo%20resolver%20mi%20deuda%20médica." class="wa-float" target="_blank" title="Escríbenos por WhatsApp">
-  💬
-</a>
-
-</body>
-</html>
+CrediAlivio USA — Deuda Médica $0
+
+
+CrediAlivio USA
+* 		Cómo funciona
+* 		Tus derechos
+* 		Resultados
+* 		Aprender
+* 		Consulta gratis
+✓
+LEGAL · CONFIDENCIAL · SIN IMPORTAR TU ESTATUS
+Tu deuda médica puede llegar a $0
+Aplicamos los programas federales que los hospitales están obligados a ofrecer pero nunca te explican. Familias latinas en Florida, Texas y California.
+💬 Consulta gratis por WhatsApp Ver cómo funciona → 
+Deuda promedio cancelada
+$18,400
+↓ reducida a $0 en promedio
+🏥 
+⚡
+2–6 semanas
+Tiempo promedio de resolución
+🔒
+100% legal
+Leyes federales Sección 501(r)
+🌎
+Sin importar
+tu estatus migratorio
+💰
+Sin pago
+si no logramos resultados
++500
+Familias ayudadas
+$2.1M
+En deudas canceladas
+94%
+Casos resueltos exitosamente
+3
+Estados con cobertura activa
+EL PROBLEMA
+Lo que nadie te está diciendo
+Los hospitales tienen programas de ayuda disponibles. Pero nunca los anuncian. Solo aplican si los pides tú.
+📬
+Cartas de demanda
+Recibes amenazas de embargo, demandas judiciales o llamadas a cualquier hora. El sistema de cobro está diseñado para asustarte.
+😰
+Miedo migratorio
+Crees que una deuda médica puede afectar tu estatus o causar deportación. Ese miedo es exactamente lo que usan para presionarte a pagar.
+🔇
+Silencio institucional
+El hospital sabe que tiene programas que te ayudarían. Pero nunca te los ofrecen porque perderían ingresos.
+EL PROCESO
+Tres pasos hacia $0
+Sin burocracia innecesaria. Sin abogados costosos. Solo el proceso que funciona.
+1
+Diagnóstico gratuito
+Me mandas la foto de tu factura por WhatsApp. Reviso el hospital, el monto y tu estado para identificar qué programas aplican a tu caso. Sin costo y sin compromiso.
+2
+Aplicamos por ti
+Yo preparo toda la documentación, presento la solicitud de Charity Care y negocio directamente con el departamento financiero del hospital. Tú no tienes que hablar con nadie.
+3
+Deuda resuelta
+En 2 a 6 semanas recibes la confirmación escrita del hospital. Tu deuda queda cancelada, reducida o en un plan manejable. Las llamadas paran.
+TUS DERECHOS
+Las leyes que te protegen hoy
+Son leyes federales reales. No trucos ni lagunas legales. Derechos que tú ya tienes y que simplemente hay que activar.
+SECCIÓN 501(R)
+Charity Care / Ayuda Financiera
+Todo hospital sin fines de lucro en EE.UU. está legalmente obligado a tener un programa de ayuda financiera. Si tu ingreso califica, pueden cancelar el 100% de tu deuda.
+FDCPA
+Protección contra cobradores
+La Ley de Prácticas Justas de Cobro de Deudas prohíbe las llamadas amenazantes, el acoso y las mentiras de las agencias de cobro. Puedes denunciarlos y detenerlos.
+EMTALA
+Derecho a atención de emergencia
+Los hospitales están obligados a atenderte en emergencias sin importar tu capacidad de pago. Esto crea argumentos legales sólidos para negociar y reducir cuentas de emergencia.
+ACA
+Affordable Care Act
+Establece límites sobre cómo los hospitales pueden cobrar a pacientes de bajos ingresos y exige políticas de ayuda financiera accesibles para todos los solicitantes.
+NO SURPRISES ACT
+Ley contra cobros sorpresa
+Desde 2022, los hospitales no pueden enviarte cuentas inesperadamente altas por servicios de emergencia. Si lo hicieron, tienes derecho a disputarlas.
+STATE LAWS
+Leyes estatales adicionales
+Florida, Texas y California tienen protecciones adicionales que van más allá de la ley federal. Dependiendo de tu estado, el umbral de ingreso para calificar puede ser más alto.
+RESULTADOS REALES
+Familias que recuperaron su paz
+Nombres cambiados para proteger la privacidad de nuestros clientes.
+★★★★★
+"Tenía $22,000 en deuda del hospital después de que mi esposo tuvo un infarto. Pensé que íbamos a perder el apartamento. En menos de un mes, deuda cancelada al 100%. No podía creerlo."
+ML
+María L.
+Miami, Florida
+$22,000 → $0 
+★★★★★
+"Me llamaban todos los días. Tenía miedo de que por deber en el hospital me iban a deportar. El asesor me explicó que eso no era posible y resolvió todo. Ahora duermo tranquilo."
+CR
+Carlos R.
+Houston, Texas
+$15,300 → $0 
+★★★★★
+"Mi hija nació por cesárea de emergencia y nos llegó una cuenta de $41,000. Éramos nuevos en este país y no sabíamos nada. CrediAlivio nos ayudó a cancelarla casi completa."
+AP
+Ana P.
+Los Angeles, California
+$41,000 → $1,200 
+EDUCACIÓN GRATUITA
+Lo que necesitas saber
+Artículos escritos para que entiendas tus derechos y tomes decisiones informadas. Sin jerga legal.
+🏥
+CHARITY CARE
+¿Qué es Charity Care y cómo sé si califico?
+Explicamos el programa federal que puede cancelar tu deuda médica completa y los requisitos de ingreso por estado.
+Leer artículo → 
+📞
+TUS DERECHOS
+Cómo detener legalmente las llamadas de cobro
+La FDCPA te da el poder de silenciar a los cobradores. Te explicamos exactamente qué decirles y cómo documentarlo.
+Leer artículo → 
+🛡️
+MIGRACIÓN
+Deuda médica y estatus migratorio: la verdad
+Una deuda médica NO puede causarte deportación. Explicamos por qué y qué sí puede afectar tu proceso migratorio.
+Leer artículo → 
+🛡️
+Garantía de resultado
+Si no logramos reducir tu deuda médica al menos un 50%, no pagas nada por nuestro servicio. Así de simple. Tu riesgo es cero.
+Empezar ahora — es gratis 
+CONSULTA GRATUITA
+Cuéntanos tu caso
+Tu nombre
+Estado donde vives
+          Seleccionar estado...
+          Florida
+          Texas
+          California
+          Otro estado
+         
+Monto aproximado de la deuda
+          Seleccionar rango...
+          Menos de $5,000
+          $5,000 – $15,000
+          $15,000 – $30,000
+          Más de $30,000
+         
+¿Qué está pasando?
+Enviar y recibir orientación gratuita → 
+Respuesta en menos de 2 horas
+Revisamos cada caso personalmente. No bots, no respuestas genéricas.
+💬
+WhatsApp directo
+La forma más rápida. Escríbenos y responderemos en menos de 2 horas en horario laboral.
+🔒
+100% confidencial
+Tu información nunca se comparte con terceros. Todo lo que nos cuentes queda entre tú y nosotros.
+🌎
+Sin importar tu estatus
+No necesitas ser ciudadano ni residente permanente para acceder a los programas de Charity Care.
+⏰
+Horario de atención
+Lunes a Viernes, 8am – 6pm EST. Sábados 9am – 1pm para casos urgentes.
+No esperes a que te demanden
+Cada día sin actuar, la deuda acumula intereses y las agencias de cobro se vuelven más agresivas. El momento de resolver esto es hoy.
+💬 Escribir por WhatsApp ahora 
+
+CrediAlivio USA
+Asesoría especializada en resolución de deuda médica para familias latinas en Estados Unidos. Legal, confidencial y efectivo.
+Servicios
+* 		Charity Care
+* 		Negociación hospitalaria
+* 		Protección FDCPA
+* 		Consulta gratuita
+Recursos
+* 		Blog educativo
+* 		Guía Charity Care
+* 		Tus derechos legales
+* 		Preguntas frecuentes
+Cobertura
+* 		Florida
+* 		Texas
+* 		California
+* 		Otros estados
+© 2025 CrediAlivio USA. Todos los derechos reservados.
+Política de privacidad
+💬 
